@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Hotel Management System</title>
+    <link rel="stylesheet" href="styles.css">
+
+     <!-- This is where i got the icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-hotel"></i>
+                <h1>Arise Hotel Management System</h1>
+            </div>
+            
+            <div class="user-menu">
+                <span>Welcome Admin</span>
+                <div class="dropdown">
+                    <button class="dropbtn"><i class="fas fa-user-circle"></i></button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="dashboard">
+                <h2>Welcome to the Hotel Management System</h2>    
+                <div class="quick-links">
+                    <a href="Reservations.html" class="card">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Reservations</span>
+                    </a>
+                    <a href="guests.php" class="card">
+                        <i class="fas fa-users"></i>
+                        <span>Guests</span>
+                    </a>
+                    <a href="Staff.html" class="card">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Staff</span>
+                    </a>
+                    <a href="dashboard.html" class="card">
+                        <i class="fas fa-dashboard"></i>
+                        <span>Dashboard</span>
+                        </a>
+                  
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Hotel Management System. All rights reserved.</p>
+        </footer>
+    </div>
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f6f8fa;
+    color: #222;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: #003366;
+    color: #fff;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+}
+
+.logo i {
+    font-size: 2.2rem;
+    margin-right: 12px;
+    color: #ffd700;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    margin: 0;
+    letter-spacing: 1px;
+}
+.user-menu {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+    gap: 15px;
+}
+
+.user-menu .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.user-menu .dropbtn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.user-menu .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: #fff;
+    min-width: 140px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.user-menu .dropdown-content a {
+    color: #003366;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background 0.2s;
+}
+
+.user-menu .dropdown-content a:hover {
+    background: #f0f0f0;
+}
+
+.user-menu .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard {
+    background: #fff;
+    padding: 36px 32px;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    width: 90%;
+    max-width: 900px;
+    text-align: center;
+}
+
+.dashboard h2 {
+    margin-top: 0;
+    color: #003366;
+    font-size: 2rem;
+}
+
+.dashboard p {
+    color: #444;
+    margin-bottom: 30px;
+}
+
+.quick-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 10px;
+}
+
+.card {
+    background: #f6f8fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    width: 150px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #003366;
+    font-size: 1.1rem;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s, background 0.2s;
+}
+
+.card i {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: #ffd700;
+}
+
+.card:hover {
+    background: #003366;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+}
+
+.card:hover i {
+    color: #fff;
+}
+
+.footer {
+    background: #003366;
+    color: #fff;
+    text-align: center;
+    padding: 16px 0;
+    font-size: 1rem;
+    margin-top: auto;
+    letter-spacing: 0.5px;
+}
+    </style>
+</body>
+</html>

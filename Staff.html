@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+</head>
+<body>
+    <header class="header">
+    <nav class="navbar">
+        <ul>
+            <li><a href="dashboard.html"><i class="fas fa-gauge"></i> Dashboard</a></li>
+            <li><a href="Reservations.html"><i class="fas fa-calendar-check"></i> Reservations</a></li>
+            <li><a href="Guest.html"><i class="fas fa-user-tie"></i> Guest</a></li>
+        </ul>
+    </nav>
+</header>
+
+        <main class="main-content">
+            <section class="staff-section">
+                <h2><i class="fas fa-user-tie"></i> Staff Management</h2>
+                <p>View, add, or remove staff members from the system.</p>
+                <button class="add-btn" onclick="openModal()">
+                    <i class="fas fa-plus"></i> Add Staff</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Position</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="staff-table-body">
+                        
+                    </tbody>
+                </table>
+            </section>
+        </main> 
+    </div>
+    <div id="addStaffModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Add Staff Member</h3>
+            <form id="addStaffForm">
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
+                <label for="department">Department</label>
+                <input type="text" id="department" required>
+                <label for="position">Position</label>
+                <input type="text" id="position" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" required>
+                <button type="submit">Add Staff</button>
+            </form>
+        </div>
+    </div>
+  
+   <style>
+        
+        .main-content {
+    flex: 1;
+    padding: 40px 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #00BCF2, #00B294);
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+  .staff-section {
+            background: #fff;
+            padding: 36px 32px;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+            text-align: center;
+        }
+        .staff-section h2 {
+            color: #003366;
+            margin-top: 0;
+            font-size: 2rem;
+        }
+        .add-btn {
+            background: #003366;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 18px;
+            transition: background 0.2s;
+        }
+        .add-btn:hover {
+            background: #ffd700;
+            color: #003366;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            overflow: auto;
+            background: rgba(0,0,0,0.3);
+        }
+        .modal-content {
+            background: #fff;
+            margin: 80px auto;
+            padding: 24px 32px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.13);
+            position: relative;
+        }
+        .close {
+            color: #aaa;
+            position: absolute;
+            right: 18px;
+            top: 12px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .close:hover { color: #003366; }
+        .modal-content label {
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 4px;
+            color: #003366;
+        }
+        .modal-content input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .modal-content button {
+            background: #003366;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .modal-content button:hover {
+            background: #ffd700;
+            color: #003366;
+        }
+        .header {
+    background: linear-gradient(135deg, #187b96, #59dfc8);
+    color: #fff;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+
+}
+
+.navbar a {
+    color: #003366;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 2.1rem;
+    transition: background 0.2s, color 0.2s;
+    margin-left: 40px;
+}
+
+.navbar a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffd700;
+}
+    </style>
+
+    <script>
+        let staffList = [
+            {id: 1, name: "Jane Doe", department: "Front Desk", position: "Manager", email: "jane.doe@email.com", phone: "+1234567890"},
+            {id: 2, name: "John Smith", department: "Housekeeping", position: "Staff", email: "john.smith@email.com", phone: "+0987654321"}
+        ];
+
+        function renderStaffTable() {
+            const tbody = document.getElementById('staff-table-body');
+            tbody.innerHTML = '';
+            staffList.forEach((staff, idx) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${staff.id}</td>
+                    <td>${staff.name}</td>
+                    <td>${staff.department}</td>
+                    <td>${staff.position}</td>
+                    <td>${staff.email}</td>
+                    <td>${staff.phone}</td>
+                    <td class="action-icons">
+                        <i class="fas fa-trash" title="Delete" onclick="removeStaff(${staff.id})"></i>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function openModal() {
+            document.getElementById('addStaffModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('addStaffModal').style.display = 'none';
+            document.getElementById('addStaffForm').reset();
+        }
+
+        document.getElementById('addStaffForm').onsubmit = function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const department = document.getElementById('department').value;
+            const position = document.getElementById('position').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const newId = staffList.length ? Math.max(...staffList.map(s => s.id)) + 1 : 1;
+            staffList.push({id: newId, name, department, position, email, phone});
+            renderStaffTable();
+            closeModal();
+        };
+
+        function removeStaff(id) {
+            if (confirm('Are you sure you want to remove this staff member?')) {
+                staffList = staffList.filter(s => s.id !== id);
+                renderStaffTable();
+            }
+        }
+
+        renderStaffTable();
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('addStaffModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

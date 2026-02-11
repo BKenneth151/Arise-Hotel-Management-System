@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guest Management - Hotel Admin</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+<header class="header">
+    <nav class="navbar">
+        <ul>
+            <li><a href="dashboard.html"><i class="fas fa-gauge"></i> Dashboard</a></li>
+            <li><a href="Reservations.html"><i class="fas fa-calendar-check"></i> Reservations</a></li>
+            <li><a href="Staff.html"><i class="fas fa-user-tie"></i> Staff</a></li>
+        </ul>
+    </nav>
+</header>
+        <main class="main-content">
+            <section class="guest-section">
+                <h2><i class="fas fa-users"></i> Guest Management</h2>
+                <div class="guest-count">
+                    Total Guests: <span id="guest-count">0</span>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Check-in</th>
+                            <th>Check-out</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="guest-table-body">
+                        <!-- Guest rows will be inserted here by JS -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+     <style>
+        .main-content {
+    padding: 40px 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #FF97B5, #6E2A85);
+    min-height: 100vh;
+    width: 100%;
+
+}
+        .guest-section {
+            background: #fff;
+            padding: 36px 32px;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+            text-align: center;
+        }
+    
+        .guest-section h2 {
+            color: #003366;
+            margin-top: 0;
+            font-size: 2rem;
+        }
+        .guest-count {
+            font-size: 1.2rem;
+            color: #003366;
+            margin-bottom: 18px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: left;
+        }
+        th {
+            background: #f6f8fa;
+            color: #003366;
+        }
+        tr:hover {
+            background: #f0f4fa;
+        }
+        .action-icons i {
+            margin-right: 10px;
+            cursor: pointer;
+            color: #003366;
+            transition: color 0.2s;
+        }
+        .action-icons i:hover {
+            color: #ffd700;
+        }
+        
+.header {
+background: linear-gradient(135deg, #d46987, #6E2A85);
+    color: #fff;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+
+}
+
+.navbar a {
+    color: #003366;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 2.1rem;
+    transition: background 0.2s, color 0.2s;
+    margin-left: 40px;
+}
+
+.navbar a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffd700;
+}
+
+    </style>
+    <script>
+        let guestList = [
+            {id: 1, name: "Alice Johnson", email: "alice@email.com", phone: "+1234567890", checkin: "2025-06-25", checkout: "2025-06-28"},
+        ];
+
+        function renderGuestTable() {
+            const tbody = document.getElementById('guest-table-body');
+            tbody.innerHTML = '';
+            guestList.forEach(guest => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${guest.id}</td>
+                    <td>${guest.name}</td>
+                    <td>${guest.email}</td>
+                    <td>${guest.phone}</td>
+                    <td>${guest.checkin}</td>
+                    <td>${guest.checkout}</td>
+                    <td class="action-icons">
+                        <i class="fas fa-trash" title="Delete" onclick="removeGuest(${guest.id})"></i>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            document.getElementById('guest-count').textContent = guestList.length;
+        }
+
+        function removeGuest(id) {
+            if (confirm('Are you sure you want to remove this guest?')) {
+                guestList = guestList.filter(g => g.id !== id);
+                renderGuestTable();
+            }
+        }
+
+        // Initial render
+        renderGuestTable();
+    </script>
+</body>
+</html>
